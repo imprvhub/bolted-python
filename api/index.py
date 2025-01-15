@@ -8,7 +8,7 @@ from werkzeug.exceptions import InternalServerError
 load_dotenv()
 
 app = Flask(__name__, static_folder='static')
-domain_url = os.getenv("DOMAIN_URL", "https://bolturl.site")
+domain_url = os.getenv("DOMAIN_URL", "https://bolted.site")
 hashids_salt = os.getenv("HASHIDS_SALT")
 hashids = Hashids(salt=hashids_salt, min_length=4)
 DB_HOST = os.getenv("DB_HOST")

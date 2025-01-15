@@ -3,29 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BoltURL - A Python Url Shortener Web App">
+    <meta name="description" content="Bolted - A Python Url Shortener Web App">
     <meta name="keywords" content="URL Shortener, Python, Web App">
-    <title>BoltURL - A Python Url Shortener Web App.</title>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ google_analytics_id }}"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', '{{ google_analytics_id }}');
-    </script>
-
-    <!-- Clarity tag -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "{{ clarity_id }}");
-    </script>
-
+    <title>Bolted - A Python Url Shortener Web App.</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='assets/logos/logo192.png') }}">
     <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="{{ url_for('static', filename='assets/logos/logo180.png') }}">
@@ -42,7 +22,7 @@
                 <img src="{{ url_for('static', filename='assets/logos/logo512.png') }}" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;" />
             </a>
             <a href="/" style="text-decoration: none; color: inherit;" rel="noopener noreferrer">
-                <h3>BoltURL</h3>
+                <h3>Bolted</h3>
             </a>
         </div>
         
@@ -77,28 +57,28 @@
                 -Use the website in a way that may harm it or affect its performance.
                 -Disassemble or decompile the website.</p>
             <h4 style="font-size: 12px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">2. Permitted Use</h4>
-            <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">You are allowed to use the website for personal and non-commercial purposes. Any other use without explicit written authorization from BoltURL is prohibited.</p>
+            <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">You are allowed to use the website for personal and non-commercial purposes. Any other use without explicit written authorization from Bolted is prohibited.</p>
             <h4 style="font-size: 12px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">3. Disclaimer for Website Use</h4>
-            <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">The website is provided "as is" and "as available." BoltURL makes no warranties, express or implied, about the functionality, accuracy, or availability of the website.
-                Additionally, in the event of any cyber attack, security vulnerability, or unauthorized access to the website, BoltURL will not be responsible for damages, losses, or disruptions caused by it. Users acknowledge and accept that the security of the website may be compromised, and they use the website at their own risk in such circumstances. We take extensive and continuous measures to ensure the security of the website, but we do not guarantee absolute security.
+            <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">The website is provided "as is" and "as available." Bolted makes no warranties, express or implied, about the functionality, accuracy, or availability of the website.
+                Additionally, in the event of any cyber attack, security vulnerability, or unauthorized access to the website, Bolted will not be responsible for damages, losses, or disruptions caused by it. Users acknowledge and accept that the security of the website may be compromised, and they use the website at their own risk in such circumstances. We take extensive and continuous measures to ensure the security of the website, but we do not guarantee absolute security.
                 The online security landscape is challenging, and no system can claim complete immunity against risks. Please be aware that our primary goal is to safeguard the integrity of the web application and your experience with it. We are committed to ensuring a secure environment for your use.
                 It is essential for users to take precautions, such as verifying the links they use and using updated and secure devices and networks. In the unlikely event of any security incident, we will investigate immediately, take necessary actions, and keep you informed.
                 This disclaimer extends to any potential impact on user data, system integrity, or the overall performance of the website resulting from external malicious activities. Users are advised to use the website with awareness of possible security risks and take necessary measures to protect their data and devices.</p>
-            <h4 style="font-size: 12px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">4. Responsible Use of BoltURL and best Practices. Important Notice:</h4>
-            <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">By using BoltURL, the user acknowledges and accepts that the functionality of this website is designed exclusively for presentation to recruiters. The generation of shortened links is merely a demonstrative feature.
-                BoltURL, its development team, and any related entity do not assume any responsibility for the misuse of generated links or any other aspect of the site's functionality. The responsibility lies solely with the user, who must use the platform responsibly and adhere to online best practices when using links generated by BoltURL. It is crucial to recognize that any misuse of the functionality goes beyond our purpose. Please consider the following best practices:
+            <h4 style="font-size: 12px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">4. Responsible Use of Bolted and best Practices. Important Notice:</h4>
+            <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">By using Bolted, the user acknowledges and accepts that the functionality of this website is designed exclusively for presentation to recruiters. The generation of shortened links is merely a demonstrative feature.
+                Bolted, its development team, and any related entity do not assume any responsibility for the misuse of generated links or any other aspect of the site's functionality. The responsibility lies solely with the user, who must use the platform responsibly and adhere to online best practices when using links generated by Bolted. It is crucial to recognize that any misuse of the functionality goes beyond our purpose. Please consider the following best practices:
                 Avoid using generated links for illegal or malicious activities.
                 Be aware that the functionality of this site is exclusively demonstrative and should not substitute real link shortening services.
-                Do not share links generated by BoltURL in critical environments or with expectations of active functioning.
-                Your understanding and compliance with these guidelines are crucial for the responsible use of BoltURL. We appreciate your cooperation and hope you enjoy the demonstrative experience of our service.</p>
+                Do not share links generated by Bolted in critical environments or with expectations of active functioning.
+                Your understanding and compliance with these guidelines are crucial for the responsible use of Bolted. We appreciate your cooperation and hope you enjoy the demonstrative experience of our service.</p>
             <h4 style="font-size: 12px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">5. Attributions:</h4>
             <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">For social media icons licensed under the Creative Commons Attribution 4.0 International license - Attribution: Font Awesome Free 5.4.1 by @fontawesome - https://fontawesome.com</p>
             <h4 style="font-size: 12px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">6. Information We Collect</h4>
-            <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">BoltURL may collect and store certain information about your use of the website. This may include, but is not limited to, non-personal information such as device type, browser type, and usage patterns. Our Privacy Policy (see Section 9) describes how this information is handled.</p>
+            <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">Bolted may collect and store certain information about your use of the website. This may include, but is not limited to, non-personal information such as device type, browser type, and usage patterns. Our Privacy Policy (see Section 9) describes how this information is handled.</p>
             <h4 style="font-size: 12px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">7. Modifications and Termination</h4>
-            <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">BoltURL reserves the right to modify, suspend, or terminate the website at any time without prior notice.</p>
+            <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">Bolted reserves the right to modify, suspend, or terminate the website at any time without prior notice.</p>
             <h4 style="font-size: 12px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">8. Limitation of Liability</h4>
-            <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">BoltURL will not be liable for any direct, indirect, incidental, special, or consequential damages arising from the use or inability to use the website.</p>
+            <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">Bolted will not be liable for any direct, indirect, incidental, special, or consequential damages arising from the use or inability to use the website.</p>
             <h4 style="font-size: 12px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">9. Privacy Policy</h4>
             <p style="font-size: 10px; color: rgba(255, 255, 255, 0.8); letter-spacing: 2px; text-transform: uppercase;">
                 By using our website, you agree to the use of cookies and consent to the use of tracking technologies such as Google Analytics. Our Cookie Policy provides details on what cookies are, how we use them, the involvement of third-party partners, your cookie options, and additional information. Cookies are small pieces of text sent to your web browser from a visited website. They are stored in your browser, allowing the website or third parties to recognize you, simplifying your subsequent visits and improving the website's utility. 

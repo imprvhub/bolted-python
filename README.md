@@ -1,9 +1,9 @@
-## Welcome to the [Bolt URL!](https://bolturl.site/) Project.
-This Link Shortener web app showcases how Python can do anything. Using Python (Flask Framework) with Templates and a little of style. For detailed insights, please visit [this link](https://ivanluna.dev/projects/post-python-bolturl/).
+## Welcome to the [Bolted!](https://bolted.site/) Project.
+This Link Shortener web app showcases how Python can do anything. Using Python (Flask Framework) with Templates and a little of style. For detailed insights, please visit [this link](https://ivanluna.dev/projects/post-python-bolted/).
 
 ### Demo
 
-Visit the live app: [bolturl.site](https://bolturl.site)
+Visit the live app: [bolted.site](https://bolted.site)
 
 ### Preview
 
@@ -30,11 +30,11 @@ Visit the live app: [bolturl.site](https://bolturl.site)
 
 #### 1. Clone this project.
 ```bash
-git clone https://github.com/imprvhub/bolturl-python.git
+git clone https://github.com/imprvhub/bolted-python.git
 ```
 #### 2.1 Navigate to the project directory (from your terminal IDE)
 ```bash
-cd /your/folder/directory/bolturl-python
+cd /your/folder/directory/bolted-python
 ```
 #### 3. Install Dependencies
 ```bash
@@ -72,7 +72,7 @@ python3 index.py
 ### Feedback & Support
 Your input matters, and I'm ready to help address any inquiries or feedback you may have. Your contributions are essential for refining the project and enhancing the overall user experience. Don't hesitate to get in touch with me:
 
-Feel free to share your insights, recommendations, or suggestions for continuous improvement. If you encounter any challenges or require assistance, please [create a new GitHub issue](https://github.com/imprvhub/bolturl-python/issues/new). Be sure to provide a detailed description of your issue to facilitate prompt and precise support.
+Feel free to share your insights, recommendations, or suggestions for continuous improvement. If you encounter any challenges or require assistance, please [create a new GitHub issue](https://github.com/imprvhub/bolted-python/issues/new). Be sure to provide a detailed description of your issue to facilitate prompt and precise support.
 
 ### License
 For more information regarding this topic please read the following [User Agreement Section.](https://ivanluna.dev/user-agreement/)
