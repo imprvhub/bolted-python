@@ -1,10 +1,11 @@
+import os
+import psycopg2
+
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from hashids import Hashids
-import os
-import psycopg2
-from dotenv import load_dotenv
 
 load_dotenv()
 
