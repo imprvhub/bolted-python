@@ -1,6 +1,5 @@
 import os
-import psycopg2
-
+import libsql_experimental as libsql
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -23,33 +22,32 @@ domain_url = os.getenv("DOMAIN_URL", "https://bolted.site")
 hashids_salt = os.getenv("HASHIDS_SALT")
 hashids = Hashids(salt=hashids_salt, min_length=4)
 
-db_config = {
-    "host": os.getenv("DB_HOST"),
-    "port": os.getenv("DB_PORT"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD"),
-    "dbname": os.getenv("DB_NAME"),
-    "sslmode": os.getenv("DB_SSLMODE")
-}
+turso_db_url = os.getenv("TURSO_DATABASE_URL")
+turso_auth_token = os.getenv("TURSO_AUTH_TOKEN")
+
+if not turso_db_url or not turso_auth_token:
+    raise ValueError("TURSO_DATABASE_URL and TURSO_AUTH_TOKEN environment variables are required")
 
 class UrlInput(BaseModel):
     url: str
 
 def get_db_connection():
-    return psycopg2.connect(**db_config)
+    return libsql.connect(turso_db_url, auth_token=turso_auth_token)
 
 def initialize_db():
     conn = get_db_connection()
-    conn.autocommit = True
-    with conn.cursor() as cursor:
-        cursor.execute("""
+    try:
+        conn.execute("""
             CREATE TABLE IF NOT EXISTS urls (
-                id SERIAL PRIMARY KEY,
-                original_url VARCHAR(255) NOT NULL,
-                short_url VARCHAR(255) NOT NULL
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                original_url TEXT NOT NULL,
+                short_url TEXT NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         """)
-    conn.close()
+        conn.commit()
+    finally:
+        conn.close()
 
 def validate_url(url: str) -> str:
     url = url.lower()
@@ -63,20 +61,23 @@ async def shorten_url(url_input: UrlInput):
     
     conn = get_db_connection()
     try:
-        with conn.cursor() as cursor:
-            cursor.execute(
-                "INSERT INTO urls (original_url, short_url) VALUES (%s, %s) RETURNING id",
-                (validated_url, '')
-            )
-            url_id = cursor.fetchone()[0]
-            url_code = hashids.encode(url_id)
-            complete_url = f"{domain_url}/{url_code}"
-            cursor.execute(
-                "UPDATE urls SET short_url = %s WHERE id = %s",
-                (complete_url, url_id)
-            )
-            conn.commit()
-            return {"shortened_url": complete_url}
+        cursor = conn.execute(
+            "INSERT INTO urls (original_url, short_url) VALUES (?, ?) RETURNING id",
+            (validated_url, '')
+        )
+        result = cursor.fetchone()
+        url_id = result[0]
+        
+        url_code = hashids.encode(url_id)
+        complete_url = f"{domain_url}/{url_code}"
+        
+        conn.execute(
+            "UPDATE urls SET short_url = ? WHERE id = ?",
+            (complete_url, url_id)
+        )
+        conn.commit()
+        
+        return {"shortened_url": complete_url}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     finally:
@@ -86,19 +87,24 @@ async def shorten_url(url_input: UrlInput):
 async def get_original_url(url_code: str):
     conn = get_db_connection()
     try:
-        with conn.cursor() as cursor:
-            cursor.execute(
-                "SELECT original_url FROM urls WHERE short_url = %s",
-                (f"{domain_url}/{url_code}",)
-            )
-            result = cursor.fetchone()
-            if not result:
-                raise HTTPException(status_code=404, detail="URL not found")
-            return {"original_url": result[0]}
-    except psycopg2.Error as e:
+        cursor = conn.execute(
+            "SELECT original_url FROM urls WHERE short_url = ?",
+            (f"{domain_url}/{url_code}",)
+        )
+        result = cursor.fetchone()
+        
+        if not result:
+            raise HTTPException(status_code=404, detail="URL not found")
+        
+        return {"original_url": result[0]}
+    except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     finally:
         conn.close()
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "service": "url-shortener"}
 
 initialize_db()
 
